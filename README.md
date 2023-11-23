@@ -67,7 +67,7 @@ python test.py --config-file <your own config file>
 
 And you should see something similar to the following (this were the results obtained using the default configuration file):
 
-!()[readme_images/table_of_perfomance.png]
+![Test performance](readme_images/table_of_perfomance.png)
 
 
 ## Configuration files
