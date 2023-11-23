@@ -36,9 +36,17 @@ In the original paper, the authors obtained an accuracy over the test dataset of
 
 Here you can see an example of the GAN's performance to translate from MNIST to MNIST-M:
 
-![Infered MNIST-M](readme_images/infered_mnistm.png "Infered MNIST-M Caption")
-![Real MNIST-M](readme_images/real_mnistm.png "Real MNIST-M Caption")
+<figure>
+    <img src="readme_images/infered_mnistm.png"
+         alt="Infered MNIST-M">
+    <figcaption>Infered MNIST-M</figcaption>
+</figure>
 
+<figure>
+    <img src="readme_images/real_mnistm.png"
+         alt="Real MNIST-M">
+    <figcaption>Real MNIST-M</figcaption>
+</figure>
 
 ## Training
 
