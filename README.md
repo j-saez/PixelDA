@@ -36,8 +36,8 @@ In the original paper, the authors obtained an accuracy over the test dataset of
 
 Here you can see an example of the GAN's performance to translate from MNIST to MNIST-M:
 
-![Infered MNIST-M](readme_images/infered_mnistm.png)
-![Real MNIST-M](readme_images/real_mnistm.png)
+![Infered MNIST-M](readme_images/infered_mnistm.png "Infered MNIST-M Caption")
+![Real MNIST-M](readme_images/real_mnistm.png "Real MNIST-M Caption")
 
 
 ## Training
@@ -67,7 +67,7 @@ python test.py --config-file <your own config file>
 
 And you should see something similar to the following (this were the results obtained using the default configuration file):
 
-!()[readme_images/test_example.png]
+!()[readme_images/table_of_perfomance.png]
 
 
 ## Configuration files
