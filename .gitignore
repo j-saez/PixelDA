@@ -1,0 +1,7 @@
+pyrightconfig.json
+.python-version
+test_code.py
+datasets/data/
+runs/
+**__pycache__**
+**lightning_logs**

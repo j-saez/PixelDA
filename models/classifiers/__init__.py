@@ -1,0 +1,2 @@
+from models.classifiers.linemod_classifier import LineModClassifier
+from models.classifiers.mnistm_classifier import MNISTMClassifier
