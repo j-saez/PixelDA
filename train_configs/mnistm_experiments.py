@@ -27,7 +27,7 @@ generalparams = Generalparams(
     accelerator = 'cuda',      # Hardware acceleration for training
     num_workers=12,            # Number of workers
     devices = [0,],            # Comma separated list containing the gpu/s where the code will be executed. (Example 1 = 0 -- Example 2 = 0,1)
-    pretrained_weights = 'runs/checkpoints/PixelDA_mnist2mnistm_mseLoss_eepoch=40_mClsAccval_acc=0.97.ckpt', # Path to the pretrained_weights
+    pretrained_weights = None, # Path to the pretrained_weights
     test_model_epoch = 5,      # Sets the number of epochs to be trained before testing the model.
     log_every_n_steps = 500,   # Sets the number of steps to be executed before logging training info.
 )

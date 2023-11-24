@@ -2,11 +2,11 @@
 
 # Define the Docker image name and tag
 IMAGE_NAME="pixelda"
-TAG="latest"
-DOCKER_IMAGE="${IMAGE_NAME}:${TAG}"
+IMAGE_TAG="latest"
+DOCKER_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
 
 # Check if the Docker image exists
-if ! docker inspect "${DOCKER_IMAGE}" &> /dev/null; then
+if ! docker images "${IMAGE_NAME}:${IMAGE_TAG}" | grep -q "${IMAGE_NAME}.*${IMAGE_TAG}"; then
     echo "Docker image '${DOCKER_IMAGE}' not found. Creating the image..."
     docker build -t "${DOCKER_IMAGE}" docker/
 fi

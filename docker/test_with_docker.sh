@@ -2,11 +2,11 @@
 
 # Define the Docker image name and tag
 IMAGE_NAME="pixelda"
-TAG="latest"
-DOCKER_IMAGE="${IMAGE_NAME}:${TAG}"
+IMAGE_TAG="latest"
+DOCKER_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
 
 # Check if the Docker image exists
-if ! docker inspect "${DOCKER_IMAGE}" &> /dev/null; then
+if ! docker images "${IMAGE_NAME}:${IMAGE_TAG}" | grep -q "${IMAGE_NAME}.*${IMAGE_TAG}"; then
     echo "Docker image '${DOCKER_IMAGE}' not found. Creating the image..."
     docker build -t "${DOCKER_IMAGE}" docker/
 fi
@@ -18,5 +18,4 @@ if [ "$#" -eq 0 ]; then
 fi
 
 PIXELDA_DIR="$(pwd)"
-echo "$(pwd)"
 docker run -it --gpus all -v "${PIXELDA_DIR}:/pixelda" "${DOCKER_IMAGE}" python3 test.py "$@" 
