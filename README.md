@@ -12,7 +12,7 @@ You can use docker to train and test the algorithm. For that you will need to ha
 If you are going to use docker to train and test the algorithm, then go straight away to the train and test section.
 
 ### Without docker
-To install all the requirements, it is recommended to create a virtual environment. In my case I commonly use pyenv and virtual env for that. In case you want to install it, here is a (good tutorial)[https://realpython.com/intro-to-pyenv/] on how to do so.
+To install all the requirements, it is recommended to create a virtual environment. In my case I commonly use pyenv and virtual env for that. In case you want to install it, here is a [good tutorial](https://realpython.com/intro-to-pyenv/) on how to do so.
 
 After that, you just have to run:
 
