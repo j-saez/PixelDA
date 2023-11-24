@@ -1,7 +1,7 @@
 import torch
 import pytorch_lightning as pl
 from datasets.data_modules.classes import Source2TargetDataset
-from torch.utils.data import random_split, DataLoader
+from torch.utils.data import random_split
 from training.configuration import Configuration
 from training.utils import download_dataset
 

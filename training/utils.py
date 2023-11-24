@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import importlib
 import zipfile
 import gdown
@@ -6,11 +7,11 @@ from models import MNISTMClassifier, LineModClassifier
 from training.configuration import Configuration
 import datasets.data_modules.classes as dataset_classes
 
+
 DATASETS_PATH = f'{os.getcwd()}/datasets/data'
-MNISTM_URL = 'https://drive.google.com/uc?id=1Nr23iNTIwn2BkuQbrE7tgL2U84qVna0j'
-MNIST_URL = 'https://drive.google.com/uc?id=18gJ9LsJB4d1fxYjzVJB-YgZ1_dBMqiIp'
-USPS_URL = 'https://drive.google.com/uc?id=1oeH-4OMLtEJIEIEq_YZSmMJZvm8Oft9r'
-AVAILABLE_DATASETS = ['mnist', 'mnistm', 'usps']
+MNISTM_URL = 'https://drive.google.com/uc?id=1f8KjXobfEkDB1LKCUX-5i7JcDZHshOAS'
+MNIST_URL = 'https://drive.google.com/uc?id=1flkS4TmuUx3vLNrcCPky-hPhOJNiYXIb'
+AVAILABLE_DATASETS = ['mnist', 'mnistm']
 CLASSIFIERS_AVAILABLE = ['mnistm_classifier', 'linemod_classifier']
 
 def load_dataset(dataset_name: str, split: str, config: Configuration):
@@ -28,8 +29,6 @@ def load_dataset(dataset_name: str, split: str, config: Configuration):
         dataset = dataset_classes.MNISTDataset(split, config)
     elif dataset_name == 'mnistm':
         dataset = dataset_classes.MNISTMDataset(split, config)
-    elif dataset_name == 'usps':
-        dataset = dataset_classes.USPSDataset(split, config)
 
     return dataset
 
@@ -41,15 +40,22 @@ def download_dataset(dataset_name: str):
         >> split: (str) 'train' or 'test'
     Outputs: None
     """
+    if not os.path.exists(DATASETS_PATH):
+        os.mkdir(DATASETS_PATH)
+
     if dataset_name == 'mnist':
         if not os.path.exists(f'{DATASETS_PATH}/MNIST'):
+            print(f'========> Downloading MNIST dataset')
             gdown.download(MNIST_URL, f'{DATASETS_PATH}/mnist.zip', quiet=True)
             unzip_file(f'mnist.zip')
+            print(f'====================> Done')
 
     elif dataset_name == 'mnistm':
         if not os.path.exists(f'{DATASETS_PATH}/MNIST-M'):
+            print(f'========> Downloading MNIST-M dataset')
             gdown.download(MNISTM_URL, f'{DATASETS_PATH}/mnistm.zip', quiet=True)
             unzip_file(f'mnistm.zip')
+            print(f'====================> Done')
 
     elif dataset_name == 'usps':
         if not os.path.exists(f'{DATASETS_PATH}/USPS'):

@@ -1,8 +1,10 @@
+import os
 import argparse
 import pytorch_lightning as pl
 from models.pixelda            import PixelDA
 from datasets.data_modules     import Source2TargetDataModule 
 from training.utils            import load_configuration
+from pytorch_lightning.loggers import TensorBoardLogger
 
 SOURCE_IMGS_IDX = 0
 TARGET_IMGS_IDX = 1
@@ -34,7 +36,14 @@ if __name__ == '__main__':
     model = PixelDA.load_from_checkpoint(config.general.pretrained_weights)
     print(f'===========================================================================')
 
+    tb_logger = TensorBoardLogger(
+        save_dir='runs/tensorboard',
+        name='PixelDA',
+        version=f"{config.dataparams.source_dataset_name}_2_{config.dataparams.target_dataset_name}_{config.hyperparams.adv_loss}Loss",
+        default_hp_metric=False)
+
     trainer = pl.Trainer(
+        logger=tb_logger,
         accelerator=config.general.accelerator,
         devices=config.general.devices,
         max_epochs=config.hyperparams.epochs,

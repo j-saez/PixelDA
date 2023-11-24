@@ -6,15 +6,19 @@ This repository has been tested on Ubuntu 20.04 using CUDA 11.8 and Pytorch Ligh
 
 ## Installation
 
+### Using docker
+You can use docker to train and test the algorithm. For that you will need to have docker and nvidia container toolkit intalled. If you do not have them install, follow [this tutorial](https://docs.docker.com/engine/install/ubuntu/) to install docker and this [other one](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) to add gpu support.
+
+If you are going to use docker to train and test the algorithm, then go straight away to the train and test section.
+
+### Without docker
 To install all the requirements, it is recommended to create a virtual environment. In my case I commonly use pyenv and virtual env for that. In case you want to install it, here is a (good tutorial)[https://realpython.com/intro-to-pyenv/] on how to do so.
 
 After that, you just have to run:
 
 ```bash
-pip install -r requirements.txt
+pip install -r docker/requirements.txt
 ````
-
-Have into account that sometimes, if you use a different OS or CUDA version, there can be incompatibilities. **ADD DOCKER SUPPORT**
 
 ## Model
 
@@ -51,13 +55,15 @@ Here you can see an example of the GAN's performance to translate from MNIST to 
 In order to train the model go to the **root directory** of the repository and run:
 
 ```bash
-python train.py --config-file mnistm_experiments
+sh docker/train_with_docker.sh --config-file mnistm_experiments # if you are using docker
+python train.py --config-file mnistm_experiments # if you are not
 ```
 
 This will train the model with the default parameters for the experiments. In case you want to train the algorithm with different parameters you will either have to modify the train_configs/mnistm_experiments.py file or create a new one. If you do create a new one, you will have to **create inside the train_configs directory**. Then you can run:
 
 ```bash
-python train.py --config-file <your own config file>
+sh docker/train_with_docker.sh --config-file <your own config file> # if you are using docker 
+python train.py --config-file <your own config file> # if you are not
 ```
 
 If you have doubts about it, please read the configuration files section at the end of this document.
@@ -66,9 +72,9 @@ If you have doubts about it, please read the configuration files section at the 
 
 To test our model previously trained, remember to add the path to the pretrained weights of the model in the General params of your configuration file. The pretrained models are stored in runs/checkpoints. After having done this, just run:
 
-
 ```bash
-python test.py --config-file <your own config file>
+sh docker/test_with_docker.sh --config-file <your own config file> # if you are using docker 
+python test.py --config-file <your own config file> # if you are not
 ```
 
 And you should see something similar to the following (this were the results obtained using the default configuration file):

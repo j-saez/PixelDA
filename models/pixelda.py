@@ -8,26 +8,6 @@ import pytorch_lightning as torch_lightning
 from models                 import Generator, Discriminator
 from training.configuration import Configuration
 
-"""
-TODOs:
-
-    -----> Check that the following especifications are set in the code:
-            • Batch size 32
-            • Learning rate decayed by 0.95 every 20,000 steps
-            • All convolutions have a 3x3 filter kernel
-            • Inject noise drawn from a zero centered Gaussian with stddev 0.2 after every layer of discriminator
-            • Dropout every layer in discriminator with keep probability of 90%
-            • Input noise vector is 10 dimensional sampled from a uniform distribution U(−1, 1)
-            • We follow conventions from the DCGAN paper [36] for several aspects:
-                – An L2 weight decay of 1e −5 is applied to all parameters
-                – Leaky ReLUs have a leakiness parameter of 0.2
-                – Parameters initialized from zero centered Gaussian with stddev 0.02
-                – We use the ADAM optimizer with β1 = 0.5
-    
-    -----> Create and learn how to save the model's weights and tensorboard information
-
-"""
-
 FIXED_SRC_IMGS_IDX = 0
 FIXED_TGT_IMGS_IDX = 1
 FIXED_NOISE_IDX    = 2
